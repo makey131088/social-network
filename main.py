@@ -112,3 +112,7 @@ def  forgot_pass():
 @app.post("/api/v1/handler")
 def form_handler():
     return "OK"
+
+@app.get("/api/v1/news")
+def get_news():
+    return NEWS
