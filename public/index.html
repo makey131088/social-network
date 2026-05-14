@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Привет {{username}}</h3>
+    <a href="/logout">Выход</a>
+    <a href="/login">Вход</a>
+    <!-- Точка монтирования REACT -->
+    <div id="root"></div>
+    <div class="container">
+        <h1>Новости</h1>
+        
+        <button class="refresh-btn" onclick="loadNews()">Обновить новости</button>
+        
+        <div class="news-table-container">
+            <div id="newsTable">
+                <div class="loading">Загрузка новостей</div>
+            </div>
+        </div>     
+        <div id="root"></div>
+    </div>
+
+    
+    <script src="{{ url_for('static', filename='master.js') }}"></script>
+    
+    <!-- <script>
+        // Создание элемента
+        let btn = document.createElement('button');
+        // Модификация элемента
+        btn.innerText = "Нажми меня!";
+        btn.classList.add("btn", "btn-danger");
+        let mountPoint = document.getElementById("root");
+        // Размещение элемента
+        mountPoint.append(btn);
+        // Добавления обработчика события
+        btn.addEventListener("click", e => {
+            //  Удаление элемента
+            e.target.remove();
+        })
+        
+        async function loadNews() {
+            let response = await fetch("/api/v1/news");
+            let news = await response.json();
+            let table = document.createElement("table");
+            table.classList.add("table");
+            let tbody = document.createElement("tbody");
+            table.append(tbody);
+            news.forEach(e => {
+                let row = document.createElement("tr");
+                row.insertAdjacentHTML("afterbegin", `
+                    <td>${e.title})/td>
+                    <td>${e.text})/td>
+                    <td>${e.author})/td>
+                    <td>${e.date})/td>
+                `);
+                tbody.append(row);
+            });
+            mountPoint.append(table);
+        }
+        window.onload = loadNews;
+    </script> -->
+</body>
+</html>
